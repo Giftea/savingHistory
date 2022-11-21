@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: Apache-2.0
+pragma solidity 0.8.4;
+
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+import "./ICommunity.sol";
+import "./ICommunityAdmin.sol";
+
+/**
+ * @title Storage for Community
+ * @notice For future upgrades, do not change CommunityStorageV1. Create a new
+ * contract which implements CommunityStorageV1 and following the naming convention
+ * CommunityStorageVX.
+ */
+abstract contract CommunityStorageV1 is ICommunity {
+    bool public override locked;
+    uint256 public override originalClaimAmount; //the maximum amount that can be claimed by a beneficiary once
+    uint256 public override baseInterval;
+    uint256 public override incrementInterval;
+    uint256 public override maxTotalClaim; //the total amount that can be claimed by a beneficiary over time
+    uint256 public override validBeneficiaryCount;
+    uint256 public override treasuryFunds;
+    uint256 public override privateFunds;
+    uint256 public override decreaseStep;
+    uint256 public override minTranche;
+    uint256 public override maxTranche;
+    uint256 public override lastFundRequest;
+
+    ICommunity public override previousCommunity;
+    ICommunityAdmin public override communityAdmin;
+
+    mapping(address => Beneficiary) internal _beneficiaries;
+    EnumerableSet.AddressSet internal beneficiaryList;
+
+    IERC20 public _token;
+    uint256 public override maxBeneficiaries;
+
+    Token[] public override tokens;
+    EnumerableSet.AddressSet internal _tokenList;
+    uint256 public override claimAmount;
+}

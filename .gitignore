@@ -1,0 +1,13 @@
+smart-contract/node_modules
+smart-contract/.env
+smart-contract/coverage
+smart-contract/coverage.json
+smart-contract/typechain
+smart-contract/typechain-types
+
+#Hardhat files
+smart-contract/cache
+smart-contract/artifacts
+
+smart-contract/Follow.md
+.DS_STore
