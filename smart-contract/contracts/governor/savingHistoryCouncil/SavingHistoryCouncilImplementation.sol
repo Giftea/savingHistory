@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity 0.8.4;
 
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
@@ -203,7 +204,7 @@ contract SavingHistoryCouncilImplementation is
      * @notice Executes a queued proposal if eta has passed
      * @param _proposalId The id of the proposal to execute
      */
-    function execute(uint256 _proposalId) external onlyMember payable {
+    function execute(uint256 _proposalId) external payable onlyMember {
         require(
             state(_proposalId) == ProposalState.Succeeded,
             "SAVEH::execute: proposal can only be executed if it is succeeded"
@@ -361,7 +362,6 @@ contract SavingHistoryCouncilImplementation is
 
         emit QuorumVotesSet(quorumVotes, _newQuorumVotes);
         quorumVotes = _newQuorumVotes;
-
     }
 
     function add256(uint256 _a, uint256 _b) internal pure returns (uint256) {

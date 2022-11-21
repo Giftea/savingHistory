@@ -1,13 +1,13 @@
-# Sample Hardhat Project
+# Saving History
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Deploy Localhost
 
-Try running some of the following tasks:
+```
+npm run deploy-local
+```
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+## Deploy Testnet/Live
+
+```
+npm run deploy
 ```

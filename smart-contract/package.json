@@ -4,10 +4,15 @@
   "description": "savingHistory is an application layer protocol designed to protect the endangered heritage of different tribes worldwide while creating awareness of their way of life globally.",
   "main": "index.js",
   "scripts": {
+    "deploy": "npx hardhat run scripts/deploy.js",
+    "deploy-reset": "npx hardhat run --reset scripts/deploy.js",
+    "deploy-local": "npx hardhat run --network hardhat scripts/deploy.js",
+    "deploy-reset-local": "npx hardhat run --reset --network hardhat scripts/deploy.js",
+    "test": "hardhat test",
+    "test-local": "hardhat test --network hardhat",
     "compile": "npx hardhat compile",
     "clean": "npx hardhat clean",
     "build": "npx hardhat compile",
-    "test": "npx hardhat test",
     "prettier:dryrun": "prettier ./contracts/**/*.sol test/**/*.ts ./deploy/**/*.ts",
     "prettier:write": "prettier --write ./contracts/**/*.sol test/**/*.ts ./deploy/**/*.ts",
     "lint": "npm lint:sol",
@@ -23,9 +28,10 @@
   "license": "ISC",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
-    "hardhat": "^2.12.2",
+    "@openzeppelin/hardhat-upgrades": "^1.21.0",
     "@ubeswap/governance": "ubeswap/ubeswap-governance",
     "dotenv": "^10.0.0",
+    "hardhat": "^2.12.2",
     "solhint": "^3.3.7"
   },
   "dependencies": {
