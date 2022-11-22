@@ -40,7 +40,7 @@ async function main() {
 	await ssaveh.deployed();
 
 	const firstRewardPerBlock = hre.ethers.utils.parseEther("250");
-	const rewardPeriodSize = 17280;
+	const rewardPeriodSize = 43200; // 2 secs per block, 43200 blocks for 24 hours
 	// const startingBlock = 10611000;
 	const startingBlock = (await ethers.provider.getBlockNumber()) + 1000;
 	const decayNumerator = 998902;
