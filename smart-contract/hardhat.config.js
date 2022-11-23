@@ -1,9 +1,15 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("@openzeppelin/hardhat-upgrades");
 require("dotenv").config({ path: ".env" });
+require("@nomiclabs/hardhat-etherscan");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
+	etherscan: {
+		// Your API key for Etherscan
+		// Obtain one at https://etherscan.io/
+		apiKey: process.env.POLYGON_API_KEY,
+	},
 	networks: {
 		hardhat: {
 			allowUnlimitedContractSize: true,
