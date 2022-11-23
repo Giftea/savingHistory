@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("@openzeppelin/hardhat-upgrades");
+require("dotenv").config({ path: ".env" });
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
 		},
 		mumbai: {
 			chainId: 80001,
-			url: "https://rpc-mumbai.maticvigil.com/",
+			url: "https://matic-mumbai.chainstacklabs.com",
 			hardfork: "istanbul",
 			accounts: [process.env.PRIVATE_KEY],
 			allowUnlimitedContractSize: true,

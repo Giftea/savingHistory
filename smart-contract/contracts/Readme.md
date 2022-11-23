@@ -86,3 +86,15 @@ Matic Token: $20
   - Steps to Document History
   - Proposal Template
   - Staking
+
+```json
+{
+  "Enviroment": "MUMBAI",
+  "USDC": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+  "Donation Miner Proxy": "0x2Ce2A1b0477101eceF9F4Fc35e12214Dfc231239",
+  "Donation Miner Implementation": "0x5499c617cd5cb891E0a4654b6fcAB858575c8e0B",
+  "Treasury": "0x260D365A4D17e9CACbFef3e99C86F572072Af305",
+  "SAVEH Token": "0xE6100F636eFB90e1DA8B245503Cd418daE5BE15f",
+  "SSAVEH Token": "0xa0605B64f373dea711FC035e5AC0B9e3A791f3b7"
+}
+```
