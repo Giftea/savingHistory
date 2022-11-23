@@ -89,7 +89,7 @@ Matic Token: $20
 
 ```json
 {
-  "Enviroment": "TESTNET",
+  "Enviroment": "MUMBAI TESTNET",
   "USDC": "0xb96E918488e0690ea2BCEF6C5B394bb32249f016",
   "Donation Miner Proxy": "0xd11e64179397f25c64E955F22D26d25301C12BF2",
   "Donation Miner Implementation": "0x5499c617cd5cb891E0a4654b6fcAB858575c8e0B",
@@ -113,3 +113,16 @@ Matic Token: $20
   "Staking Proxy": "https://mumbai.polygonscan.com/address/0x340e1d8b936e260e91bb357d10576ca5e3648907#readProxyContract"
 }
 ```
+
+### Formula for Calculating Current Epoch Time left
+
+Reward Starting Block = 29293517
+Blocks Between each Epoch(Mumbai) = 17280 (Currently used)
+
+Blocks left to complete Epoch = Blocks Between each Epoch - ((Current Block - Start Block) % Blocks Between each Epoch)
+
+Time Left = Blocks left to complete Epoch x 5 secs block interval / (60 x 60)
+
+Result will be e.g 22.1 hours
+
+NB: To get current block number `await ethers.provider.getBlockNumber()`.
