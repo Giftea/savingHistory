@@ -17,9 +17,12 @@ const FeatureText = () => {
           <p className="text-base md:text-2xl lg:text-base py-5">
             {feature.content}{" "}
           </p>
-          <p className="text-sm md:text-xl lg:text-sm mb-3">
+          <a
+            href={feature.link}
+            className="text-sm md:text-xl lg:text-sm mb-3 text-[#dda61d] underline"
+          >
             {feature.subText}{" "}
-          </p>
+          </a>
         </div>
       ))}
     </div>

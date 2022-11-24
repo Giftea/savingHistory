@@ -56,27 +56,23 @@ export const features = [
       "Holders of $SAVEH Tokens have the authority to control the protocol's operation and to elect or dismiss new committee members.",
     subText: "Buy $SAVEH on Uniswap",
     image: "/images/Features/iconOne.png",
+    link:'https://app.uniswap.org/#/swap'
   },
   {
     heading: "DAO",
     content:
       "Owners of $SAVEH tokens have the ability to vote on changes to the protocol and make new suggestions.",
-    subText: "Coming Soon",
+    subText: "Vote Proposal",
     image: "/images/Features/iconTwo.png",
-  },
-  {
-    heading: "Committee",
-    content:
-      "Members of the committee include historians. They receive $SAVEH for their votes, which accept or reject proposals.",
-    subText: "Coming Soon",
-    image: "/images/Features/iconThree.png",
+    link:'https://demo.snapshot.org/#/savinghistory.eth'
   },
   {
     heading: "History Proposals",
     content:
       "Create a new proposal as a curator to get paid, or browse through those that have already been submitted to see what history is being preserved.",
-    subText: "Browse proposals",
+    subText: "Open New Proposals",
     image: "/images/Features/iconFour.png",
+    link:'https://community.savinghistory.xyz/c/histories/6'
   },
 ];
 

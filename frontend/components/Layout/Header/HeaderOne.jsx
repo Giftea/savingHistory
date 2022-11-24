@@ -6,7 +6,7 @@ const HeaderOne = () => {
 
   return (
     <div className="px-14 py-3 md:flex items-center justify-between hidden">
-      <Link className="text-sm" target={'_blank'} href='https://app.uniswap.org/#/swap'>Buy $SAVEH token on Uniswap</Link>
+      <a className="text-sm text-[#dda61d]" target={'_blank'} href='https://app.uniswap.org/#/swap'>Buy $SAVEH token on Uniswap</a>
       <ConnectButton.Custom>
         {({ account, chain, openAccountModal, openChainModal, openConnectModal, authenticationStatus, mounted }) => {
           // Note: If your app doesn't use authentication, you
