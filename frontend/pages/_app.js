@@ -5,7 +5,6 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 
-
 const { provider, chains } = configureChains([chain.polygonMumbai], [jsonRpcProvider({ rpc: (chain) => ({ http: chain.rpcUrls.default }) })]);
 
 const { connectors } = getDefaultWallets({

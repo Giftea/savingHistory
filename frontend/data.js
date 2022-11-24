@@ -56,19 +56,22 @@ export const heroText = {
 export const features = [
   {
     heading: "$SAVEH Token",
-    content: "Holders of $SAVEH Tokens have the authority to control the protocol's operation and to elect or dismiss new committee members.",
-    subText: "Buy $SAVEH on SwapScanner",
+    content:
+      "Holders of $SAVEH Tokens have the authority to control the protocol's operation and to elect or dismiss new committee members.",
+    subText: "Buy $SAVEH on Uniswap",
     image: "/images/Features/iconOne.png",
   },
   {
     heading: "DAO",
-    content: "Owners of $SAVEH tokens have the ability to vote on changes to the protocol and make new suggestions.",
+    content:
+      "Owners of $SAVEH tokens have the ability to vote on changes to the protocol and make new suggestions.",
     subText: "Coming Soon",
     image: "/images/Features/iconTwo.png",
   },
   {
     heading: "Committee",
-    content: "Members of the committee include historians. They receive $SAVEH for their votes, which accept or reject proposals.",
+    content:
+      "Members of the committee include historians. They receive $SAVEH for their votes, which accept or reject proposals.",
     subText: "Coming Soon",
     image: "/images/Features/iconThree.png",
   },
@@ -118,7 +121,7 @@ export const futurePlans = [
     text: "Launch platform through IDO",
   },
   {
-    text: "List $SAVEH token on SwapScanner",
+    text: "List $SAVEH token on s",
   },
   {
     text: "Onboard genesis council committee members across Africa, Latin America, and Asia",
@@ -163,7 +166,8 @@ export const footerlinks = [
 
 export const farmingHeroText = {
   heading: "Preserving culture by saving history",
-  paragraph: "Donate to almost extinct cultures that are supported by unconditional basic income, and you'll be rewarded with $SAVEH.",
+  paragraph:
+    "Donate to almost extinct cultures that are supported by unconditional basic income, and you'll be rewarded with $SAVEH.",
   buttonText: "Donate and earn $SAVEH Tokens",
 };
 
@@ -173,8 +177,10 @@ export const savehCardText = {
   heading1: "$SAVEH Rewards",
   heading2: "Donation Reward",
   price: "~150.76 SAVEH",
-  text1: "For donating to almost extinct cultures and presercing their History.",
-  text2: "This is a rough estimate of the total amount of $SAVEH rewards that have been assigned to you and are waiting to be claimed.",
+  text1:
+    "For donating to almost extinct cultures and presercing their History.",
+  text2:
+    "This is a rough estimate of the total amount of $SAVEH rewards that have been assigned to you and are waiting to be claimed.",
 };
 
 export const summaryText = {
@@ -182,23 +188,28 @@ export const summaryText = {
   summary: [
     {
       title: "Available new $SAVEH tokens this epoch",
-      text: "600,00 SAVEH",
+      text: "600,000 SAVEH", // new val
+      saveh: false,
     },
     {
       title: "Your donation in the last 30 epochs",
-      text: "600,00 Dai",
+      text: "600,00 SAVEH", // new val
+      saveh: true,
     },
     {
       title: "Amount raised in the last epochs",
-      text: "600,00 Dai",
+      text: "--",
+      saveh: false,
     },
     {
       title: "Your pending rewards estimation this epoch",
-      text: "600,00 SAVEH",
+      text: "--",
+      saveh: false,
     },
     {
       title: "SAVEH rewards already allocated to you",
-      text: "600,00 SAVEH",
+      text: "600,00 SAVEH", // new val
+      saveh: true,
     },
   ],
   bottomText:

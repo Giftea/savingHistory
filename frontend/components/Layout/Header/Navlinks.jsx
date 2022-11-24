@@ -22,13 +22,6 @@ const Navlinks = () => {
             className={`!font-light ${router.pathname === navlink.link && "text-[#F8B60C]"}`}
             as={Button}
             rightIcon={navlink.dropDown !== null && <ChevronDownIcon />}
-            onClick={() =>
-              navlink.link === "/about"
-                ? window.open("https://gifteas-organization.gitbook.io/savinghistory/", "_blank")
-                : navlink.link !== "/about" && navlink.dropDown === null
-                ? router.push(`${navlink.link}`)
-                : null
-            }
           >
             {navlink.title}
           </MenuButton>

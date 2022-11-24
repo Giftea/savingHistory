@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -10,29 +10,71 @@ import {
   Input,
   Spinner,
   Center,
+  useToast,
 } from "@chakra-ui/react";
 import { useAccount, useToken } from "wagmi";
 import donateContract from "../../../utils/DonationMiner/contract";
 import USDCContract from "../../../utils/USDC/contract";
+import { ethers } from "ethers";
+import { useRouter } from "next/router";
 
 const Donate = ({ isOpen, onClose }) => {
+  const router = useRouter();
+  const toast = useToast();
   const [value, setValue] = useState("");
+  const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
+  const [usdcBalance, setUsdcBalance] = useState(0);
   const { address } = useAccount();
   const donationMinerContract = donateContract();
+
+  async function getBalance() {
+    if (address) {
+      const userBalance = await tokenContract.balanceOf(address);
+      setUsdcBalance(ethers.utils.formatEther(userBalance));
+      return usdcBalance;
+    }
+    return 0;
+  }
+
+  const tokenContract = USDCContract();
+  useEffect(() => {
+    getBalance();
+  }, []);
 
   const handleonChange = (e) => {
     setValue(e.target.value);
   };
 
-  const approveUSDC = async () => {
-    const tokenContract = USDCContract();
-    const approveDonation = await tokenContract.approve(
-      "0xb96E918488e0690ea2BCEF6C5B394bb32249f016",
-      10,
-      { gasLimit: 900000 }
-    );
-    console.log(approveDonation);
+  const approveUSDC = async (e) => {
+    e.preventDefault();
+    if (value > usdcBalance)
+      return toast({
+        title: "Insufficient USDC balance",
+        status: "error",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+
+    try {
+      const approveDonation = await tokenContract.approve(
+        "0xd11e64179397f25c64E955F22D26d25301C12BF2",
+        ethers.utils.parseEther(value.toString()),
+        { gasLimit: 900000 }
+      );
+
+      approveDonation &&
+        toast({
+          title: `${value} USDC approved!`,
+          status: "success",
+          position: "top",
+          duration: 9000,
+          isClosable: true,
+        });
+    } catch (error) {
+      console.log(error);
+    }
     setStep(2);
   };
 
@@ -42,11 +84,34 @@ const Donate = ({ isOpen, onClose }) => {
 
     const res = await donationMinerContract.donate(
       "0xb96E918488e0690ea2BCEF6C5B394bb32249f016",
-      10,
+      ethers.utils.parseEther(value.toString()),
       address,
       { gasLimit: 900000 }
     );
-
+    setLoading(true);
+    res
+      .wait()
+      .then(() => {
+        setLoading(false);
+        toast({
+          title: `Your donation of ${value} USDC was successful. Thank you!`,
+          status: "success",
+          position: "top",
+          duration: 9000,
+          isClosable: true,
+        });
+        onClose();
+        router.push("/farming");
+      })
+      .catch((err) => {
+        toast({
+          title: "An error occured",
+          status: "error",
+          position: "top",
+          duration: 9000,
+          isClosable: true,
+        });
+      });
     console.log(res);
   };
 
@@ -57,10 +122,10 @@ const Donate = ({ isOpen, onClose }) => {
         <ModalContent>
           <div className="m-8">
             {" "}
-            <ModalHeader>Donate Dai Token</ModalHeader>
+            <ModalHeader>Donate USDC Token</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <form onSubmit={handleSubmit}>
+              <form>
                 {" "}
                 <p className="text-[#6C6A65]">
                   The amount you donate and the total amount raised over the
@@ -73,16 +138,18 @@ const Donate = ({ isOpen, onClose }) => {
                   className="my-6"
                 />
                 <div className="flex justify-between items-center my-3">
-                  <img src="/images/Other/Dai.png " height={24} width={50} />
+                  <img src="/images/Other/usdc.png " height={20} width={20} />
                   <p className="text-sm">
                     Available Balance:{" "}
-                    <span className="font-bold">05.00 Dai</span>
+                    <span className="font-bold">{usdcBalance} USDC</span>
                   </p>
                 </div>
                 <Input
                   type="number"
                   className="p-5"
                   value={value}
+                  max={usdcBalance}
+                  min={1}
                   onChange={handleonChange}
                 />
                 <p className="text-[#6C6A65] text-xs mt-2">
@@ -91,17 +158,18 @@ const Donate = ({ isOpen, onClose }) => {
                 <div className="mt-8">
                   {step === 1 ? (
                     <button
-                      onClick={() => approveUSDC()}
+                      onClick={(e) => approveUSDC(e)}
                       className={`bg-primary text-sm py-4 px-5 rounded-3xl w-full`}
                     >
                       Approve USDC
                     </button>
                   ) : step === 2 ? (
                     <button
-                      type="submit"
+                      onClick={(e) => handleSubmit(e)}
                       className={`bg-primary text-sm py-4 px-5 rounded-3xl w-full`}
+                      disabled={loading}
                     >
-                      Donate
+                      {loading ? <Spinner /> : "Donate"}
                     </button>
                   ) : (
                     <Center>

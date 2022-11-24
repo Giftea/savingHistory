@@ -12,7 +12,6 @@ function connectContract() {
       //checking for eth object in the window
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
-      console.log(signer)
       donateContract = new ethers.Contract(contractAddress, contractABI, signer); // instantiating new connection to the contract
     } else {
       console.log("Ethereum object doesn't exist!");
