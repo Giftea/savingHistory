@@ -2,8 +2,8 @@
 /* HEADER */
 export const navlinks = [
   {
-    title: "About Us",
-    link: "/about",
+    title: "FAQ",
+    link: "forum.savinghistory.xyz",
     dropDown: null,
   },
   {
@@ -12,10 +12,6 @@ export const navlinks = [
     dropDown: {
       icon: "/images/Header/down-icon.png",
       links: [
-        // {
-        //   text: "Proposal Template",
-        //   link: "/history/proposal-template",
-        // },
         {
           text: "Open Proposal",
           link: "/history/open-proposal",
