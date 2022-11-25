@@ -10,7 +10,7 @@ import {
   Flex,
   useToast,
   Divider,
-  Button,
+  Button
 } from "@chakra-ui/react";
 import donateMinerContract from "../../utils/DonationMiner/contract";
 import { useAccount } from "wagmi";
@@ -26,6 +26,9 @@ const Staking = () => {
   const [balance, setBalance] = useState(0);
   const [stakeValue, setStakeValue] = useState();
   const [unStakeValue, setUnstakeValue] = useState();
+  const [currentTotal, setCurrentTotal] = useState(0);
+  const [amountStaked, setAmountStaked] = useState(0);
+  const [claimableRewardByStaking, setClaimableRewardByStaking] = useState(0);
   const [val, setVale] = useState();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -47,6 +50,28 @@ const Staking = () => {
     return balance;
   }
 
+  async function getCurrentTotalAmount() {
+    const res = await stakingContract.currentTotalAmount();
+    setCurrentTotal(Number(ethers.utils.formatEther(res)).toFixed(2));
+    return balance;
+  }
+
+  async function getStakeholder() {
+    const [amountStaked] = await stakingContract.stakeholder(address);
+    setAmountStaked(Number(ethers.utils.formatEther(amountStaked)).toFixed(2));
+    return balance;
+  }
+
+  async function getClaimableRewardByStaking() {
+    const estimate = await donateContract.estimateClaimableRewardByStaking(
+      address
+    );
+
+    setClaimableRewardByStaking(
+      Number(ethers.utils.formatEther(estimate)).toFixed(2)
+    );
+  }
+
   async function approveStaking() {
     try {
       setLoading(true);
@@ -61,19 +86,19 @@ const Staking = () => {
           status: "success",
           position: "top",
           duration: 9000,
-          isClosable: true,
+          isClosable: true
         });
       setLoading(false);
       res && setStep(2);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setLoading(true);
       toast({
         title: `Stake approval unsuccessful!`,
         status: "error",
         position: "top",
         duration: 9000,
-        isClosable: true,
+        isClosable: true
       });
       setLoading(false);
     }
@@ -84,7 +109,7 @@ const Staking = () => {
       setLoading(true);
       const res = await stakingContract.stake(
         address,
-        ethers.utils.parseEther(stakeValue.toString()),
+        ethers.utils.parseEther(stakeValue.toString())
         // { gasLimit: 900000 }
       );
       res &&
@@ -93,19 +118,19 @@ const Staking = () => {
           status: "success",
           position: "top",
           duration: 9000,
-          isClosable: true,
+          isClosable: true
         });
       setLoading(false);
       res && setStep(1);
     } catch (error) {
       setLoading(true);
-      console.log(error)
+      console.log(error);
       toast({
         title: `Stake unsuccessful!`,
         status: "error",
         position: "top",
         duration: 9000,
-        isClosable: true,
+        isClosable: true
       });
       setLoading(false);
       setStep(1);
@@ -116,6 +141,9 @@ const Staking = () => {
     if (address) {
       calcAPR();
       getSavehBalance();
+      getCurrentTotalAmount();
+      getStakeholder();
+      getClaimableRewardByStaking();
     }
   }, [address]);
 
@@ -150,7 +178,7 @@ const Staking = () => {
             $SAVEH Staking APR: {apr}%
           </h1>
           <p className="text-[#888] text-center">
-            Total staked: 1,660,630,970.95 SAVEH
+            Total staked: {currentTotal} SAVEH
           </p>
           {address ? (
             <Tabs isFitted colorScheme={"yellow"} mt={4}>
@@ -327,13 +355,13 @@ const Staking = () => {
                   <>
                     <Flex className="my-2" justifyContent={"space-between"}>
                       <h1 className=" font-bold">Total staked</h1>
-                      <h1 className=" text-[#888]">6789 SAVEH</h1>
+                      <h1 className=" text-[#888]">{currentTotal} SAVEH</h1>
                     </Flex>
                     <Divider />
 
                     <Flex className="my-2" justifyContent={"space-between"}>
                       <h1 className=" font-bold">You've staked</h1>
-                      <h1 className=" text-[#888]">6789 SAVEH</h1>
+                      <h1 className=" text-[#888]">{amountStaked} SAVEH</h1>
                     </Flex>
                     <Divider />
 
@@ -341,7 +369,9 @@ const Staking = () => {
                       <h1 className=" font-bold">
                         Total estimated SAVEH rewards this epoch
                       </h1>
-                      <h1 className=" text-[#888]">6789 SAVEH</h1>
+                      <h1 className=" text-[#888]">
+                        {claimableRewardByStaking} SAVEH
+                      </h1>
                     </Flex>
                   </>
                 </TabPanel>
