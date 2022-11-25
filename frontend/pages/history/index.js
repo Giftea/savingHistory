@@ -10,13 +10,14 @@ import {ChevronDownIcon, SearchIcon} from "@chakra-ui/icons";
 import Link from "next/link";
 
 export default function () {
+
 	return (
 		<div className="bg-ash py-20 px-5 md:px-10 lg:px-14">
 			<div className="w-full pb-10 mb-6">
 				<Box>
 					<Flex justify={'space-between'} align={'center'}>
-						<Heading as='h1' size='lg' noOfLines={1}>Communities</Heading>
-						<Button colorScheme='blue' size={'md'}>Add Community</Button>
+						<Heading as='h1' size='lg' noOfLines={1}>History</Heading>
+						<Button colorScheme='blue' size={'md'}>Add History</Button>
 					</Flex>
 				</Box>
 				<div className="">
