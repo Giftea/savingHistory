@@ -116,13 +116,13 @@ Matic Token: $20
 
 ### Formula for Calculating Current Epoch Time left
 
-Reward Starting Block = 29293517
-Blocks Between each Epoch(Mumbai) = 17280 (Currently used)
+Reward Starting Block = 29293517   
+Blocks Between each Epoch(Mumbai) = 17280 (Currently used) . 
 
-Blocks left to complete Epoch = Blocks Between each Epoch - ((Current Block - Start Block) % Blocks Between each Epoch)
+Blocks left to complete Epoch = Blocks Between each Epoch - ((Current Block - Start Block) % Blocks Between each Epoch) . 
 
-Time Left = Blocks left to complete Epoch x 5 secs block interval / (60 x 60)
+Time Left = Blocks left to complete Epoch x 5 secs block interval / (60 x 60) . 
 
-Result will be e.g 22.1 hours
+Result will be e.g 22.1 hours 
 
-NB: To get current block number `await ethers.provider.getBlockNumber()`.
+NB: To get current block number `await ethers.provider.getBlockNumber()`.  
