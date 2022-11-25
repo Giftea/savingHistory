@@ -27,7 +27,7 @@ const Navlinks = () => {
         <MenuList>
           <MenuItem
             onClick={() =>
-              router.push("/communities")
+              router.push("/history")
             }
           >
             Browse Histories{" "}
