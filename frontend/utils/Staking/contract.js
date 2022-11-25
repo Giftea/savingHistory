@@ -2,7 +2,7 @@ import abiJSON from "./abi.json";
 import { ethers } from "ethers";
 
 function connectContract() {
-  const contractAddress = "0x1a4bd8feb66fbe2bd39554c7812084ff97ba946b";
+  const contractAddress = "0x340e1d8b936e260e91bb357d10576ca5e3648907";
   const contractABI = abiJSON.abi;
   let stakingContract;
   try {

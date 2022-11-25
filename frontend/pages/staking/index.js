@@ -34,8 +34,9 @@ const Staking = () => {
   const stakingContract = stakingContractConnect();
 
   async function calcAPR() {
-    const res = await donateContract.apr(address);
-    setApr(ethers.utils.formatEther(res));
+    const res = await donateContract.generalApr();
+    // const res = await donateContract.apr(address);
+    setApr(Number(ethers.utils.formatEther(res)).toFixed(2));
     console.log(apr);
     return apr;
   }
@@ -50,9 +51,10 @@ const Staking = () => {
     try {
       setLoading(true);
       const res = await savehContract.approve(
-        "0x1a4bd8feb66fbe2bd39554c7812084ff97ba946b",
-        stakeValue
+        "0x340e1d8b936e260e91bb357d10576ca5e3648907",
+        ethers.utils.parseEther(stakeValue.toString())
       );
+      console.log(res);
       res &&
         toast({
           title: `Stake approved!`,
@@ -61,9 +63,11 @@ const Staking = () => {
           duration: 9000,
           isClosable: true,
         });
-      setStep(2);
       setLoading(false);
+      res && setStep(2);
     } catch (error) {
+      console.log(error)
+      setLoading(true);
       toast({
         title: `Stake approval unsuccessful!`,
         status: "error",
@@ -71,16 +75,18 @@ const Staking = () => {
         duration: 9000,
         isClosable: true,
       });
+      setLoading(false);
     }
-
-    console.log(res);
   }
 
   async function stake() {
     try {
-      const res = await stakingContract.stake(address, stakeValue);
-      console.log(res);
-
+      setLoading(true);
+      const res = await stakingContract.stake(
+        address,
+        ethers.utils.parseEther(stakeValue.toString()),
+        // { gasLimit: 900000 }
+      );
       res &&
         toast({
           title: `Stake successful!`,
@@ -89,8 +95,20 @@ const Staking = () => {
           duration: 9000,
           isClosable: true,
         });
+      setLoading(false);
+      res && setStep(1);
     } catch (error) {
-      console.log(error);
+      setLoading(true);
+      console.log(error)
+      toast({
+        title: `Stake unsuccessful!`,
+        status: "error",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+      setLoading(false);
+      setStep(1);
     }
   }
 
@@ -99,13 +117,13 @@ const Staking = () => {
       calcAPR();
       getSavehBalance();
     }
-  }, []);
+  }, [address]);
 
   return (
     <>
       <Flex justifyContent="space-between" className="bg-ash" px={14} py={14}>
         <div>
-          <h1 className="md:text-xl lg:text-4xl text-lg font-bold">
+          <h1 className="md:text-xl lg:text-5xl text-lg font-bold">
             Increase your governance
             <br /> power and earn extra
             <br /> rewards by staking $SAVEH.
@@ -165,6 +183,7 @@ const Staking = () => {
                             placeholder="0"
                             onChange={(e) => setStakeValue(e.target.value)}
                             className=" outline-0"
+                            required
                           />
                         </div>
                         <div>
@@ -191,7 +210,6 @@ const Staking = () => {
                               px={5}
                               py={2}
                               borderRadius="full"
-                              disabled
                               className="text-sm"
                               onClick={() => stake()}
                             >
@@ -253,6 +271,7 @@ const Staking = () => {
                             onChange={(e) => setUnstakeValue(e.target.value)}
                             className=" outline-0"
                             placeholder="0"
+                            required
                           />
                         </div>
                         <div>
