@@ -8,8 +8,10 @@ import {
 
 } from "@chakra-ui/react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 const Navlinks = () => {
+    const router = useRouter()
 
   return (
     <div className="flex items-center justify-between nav-links">
@@ -25,10 +27,7 @@ const Navlinks = () => {
         <MenuList>
           <MenuItem
             onClick={() =>
-              window.open(
-                "https://community.savinghistory.xyz/c/histories/6",
-                "_blank"
-              )
+              router.push("/communities")
             }
           >
             Browse Histories{" "}
