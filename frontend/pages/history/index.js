@@ -98,9 +98,9 @@ export default function () {
                 </Heading>
 
                 <Text color={"gray.700"}>
-                  <span className={"pr-2"}>741</span>
+                  <span className={"pr-2"}>Vienna</span>
                   &#183;
-                  <span className={"px-2"}>Brazil</span>
+                  <span className={"px-2"}>Austria</span>
                 </Text>
               </Stack>
             </Box>
