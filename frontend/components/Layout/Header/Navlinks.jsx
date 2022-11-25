@@ -1,20 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import { navlinks } from "../../../data";
 import {
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
-  Button,
+
 } from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Navlinks = () => {
-  const router = useRouter();
 
   return (
     <div className="flex items-center justify-between nav-links">
@@ -76,7 +71,9 @@ const Navlinks = () => {
           </MenuItem>
         </MenuList>
       </Menu>
-      <a href="/farming" className="px-4">Farming</a>
+      <Link href="/farming">
+        <a className="px-4">Farming</a>
+      </Link>
       <Link href="/staking">Staking</Link>
       <a
         className="px-4"

@@ -7,8 +7,10 @@ import { ethers } from "ethers";
 import donationMinerContract from "../../utils/DonationMiner/contract";
 import { getProvider } from "../../utils/getProvider";
 import Countdown from "react-countdown";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 const Section = () => {
+  const { openConnectModal } = useConnectModal();
   const { address } = useAccount();
   const [estimateToken, setEstimateToken] = useState(0);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -38,9 +40,11 @@ const Section = () => {
   }
 
   useEffect(() => {
+    if (address) {
+      getEstimate();
+    }
     getTimeLeftInEpoch();
-    getEstimate();
-  }, []);
+  }, [address]);
 
   return (
     <div className="py-8 px-5 md:px-20 lg:px-14 ">
@@ -50,7 +54,11 @@ const Section = () => {
           <p className="px-10">
             To view your $SAVEH balance and receive your
             <br /> rewards,{" "}
-            <span className="text-[#F9AB3A]">Connect to your wallet.</span>
+            {openConnectModal && (
+              <span onClick={openConnectModal} className="text-[#F9AB3A] cursor-pointer">
+                Connect to your wallet
+              </span>
+            )}
           </p>
         </div>
       ) : (
@@ -74,16 +82,3 @@ const Section = () => {
 };
 
 export default Section;
-/*
-Formula for Calculating Current Epoch Time left
-Reward Starting Block = 29293517 Blocks Between each Epoch(Mumbai) = 17280 (Currently used)
-
-Blocks left to complete Epoch = Blocks Between each Epoch - ((Current Block - Start Block) % Blocks Between each Epoch)
-
-Time Left = Blocks left to complete Epoch x 5 secs block interval / (60 x 60)
-
-Result will be e.g 22.1 hours
-
-NB: To get current block number await ethers.provider.getBlockNumber().
-
-*/
