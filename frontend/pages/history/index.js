@@ -14,7 +14,7 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem
+  MenuItem,
 } from "@chakra-ui/react";
 import { ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
@@ -51,8 +51,9 @@ export default function ({ jwt, api_key, api_secret }) {
   };
 
   useEffect(() => {
+    getHistories()
     if (jwt != undefined) getHistories();
-  });
+  },[]);
   return (
     <div className="bg-ash py-20 px-5 md:px-10 lg:px-14">
       <div className="w-full pb-10 mb-6">
@@ -152,7 +153,7 @@ export async function getStaticProps() {
     props: {
       jwt: jwt,
       api_key: api_key,
-      api_secret: api_secret
-    } // will be passed to the page component as props
+      api_secret: api_secret,
+    }, // will be passed to the page component as props
   };
 }
