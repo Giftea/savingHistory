@@ -48,6 +48,16 @@ const Staking = () => {
   }
 
   async function approveStaking() {
+    if (stakeValue === undefined) {
+      return toast({
+        title: `Please add a value!`,
+        status: "error",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+
     try {
       setLoading(true);
       const res = await savehContract.approve(
@@ -66,7 +76,7 @@ const Staking = () => {
       setLoading(false);
       res && setStep(2);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setLoading(true);
       toast({
         title: `Stake approval unsuccessful!`,
@@ -84,7 +94,7 @@ const Staking = () => {
       setLoading(true);
       const res = await stakingContract.stake(
         address,
-        ethers.utils.parseEther(stakeValue.toString()),
+        ethers.utils.parseEther(stakeValue.toString())
         // { gasLimit: 900000 }
       );
       res &&
@@ -99,7 +109,7 @@ const Staking = () => {
       res && setStep(1);
     } catch (error) {
       setLoading(true);
-      console.log(error)
+      console.log(error);
       toast({
         title: `Stake unsuccessful!`,
         status: "error",
