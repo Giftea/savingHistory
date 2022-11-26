@@ -18,8 +18,37 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function () {
+export default function ({ jwt, api_key, api_secret }) {
+  const [histories, setHistories] = useState({});
+
+  const getIpfsUrl = (hash) => {
+    return `https://gateway.pinata.cloud/ipfs/${hash}`;
+  };
+
+  const getHistories = async () => {
+    var config = {
+      method: "get",
+      url: "https://api.pinata.cloud/data/pinList?includesCount=false&metadata[name]=histories.json",
+      headers: {
+        pinata_api_key: api_key,
+        pinata_secret_api_key: api_secret
+      }
+    };
+
+    const res = await axios(config);
+    const hash = res.data.rows[0].ipfs_pin_hash;
+
+    const historiesRes = await axios({ method: "get", url: getIpfsUrl(hash) });
+
+    setHistories(historiesRes.data);
+  };
+
+  useEffect(() => {
+    if (jwt != undefined) getHistories();
+  });
   return (
     <div className="bg-ash py-20 px-5 md:px-10 lg:px-14">
       <div className="w-full pb-10 mb-6">
@@ -75,38 +104,51 @@ export default function () {
           spacing={4}
           templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
         >
-          <a href={"communities/1"}>
-            <Box
-              cursor={"pointer"}
-              maxW="lg"
-              borderWidth={"1px"}
-              borderRadius={"lg"}
-              boxShadow="sm"
-              bg={"white"}
-              padding={"12px"}
-            >
-              <img
-                alt={""}
-                src={
-                  "https://global.discourse-cdn.com/standard17/uploads/savinghistory/original/1X/32616d017729aa1bf4c59f6e3a7f2b16486673b2.jpeg"
-                }
-                style={{ width: "100%" }}
-              />
-              <Stack mt="6" spacing="3">
-                <Heading as={"h6"} size="sm">
-                  Historic Centre of Vienna
-                </Heading>
+          {Object.keys(histories).map((ipfsId, index) => (
+            <a href={`history/${ipfsId}`} key={ipfsId}>
+              <Box
+                cursor={"pointer"}
+                maxW="lg"
+                borderWidth={"1px"}
+                borderRadius={"lg"}
+                boxShadow="sm"
+                bg={"white"}
+                padding={"12px"}
+              >
+                <img
+                  alt={""}
+                  src={getIpfsUrl(histories[ipfsId].banner)}
+                  style={{ width: "100%" }}
+                />
+                <Stack mt="6" spacing="3">
+                  <Heading as={"h6"} size="sm">
+                    {histories[ipfsId].title}
+                  </Heading>
 
-                <Text color={"gray.700"}>
-                  <span className={"pr-2"}>Vienna</span>
-                  &#183;
-                  <span className={"px-2"}>Austria</span>
-                </Text>
-              </Stack>
-            </Box>
-          </a>
+                  <Text color={"gray.700"}>
+                    <span className={"pr-2"}>{histories[ipfsId].date}</span>
+                    &#183;
+                    <span className={"px-2"}>{histories[ipfsId].country}</span>
+                  </Text>
+                </Stack>
+              </Box>
+            </a>
+          ))}
         </SimpleGrid>
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const jwt = process.env.PINATA_JWT;
+  const api_key = process.env.API_KEY;
+  const api_secret = process.env.API_SECRET;
+  return {
+    props: {
+      jwt: jwt,
+      api_key: api_key,
+      api_secret: api_secret
+    } // will be passed to the page component as props
+  };
 }

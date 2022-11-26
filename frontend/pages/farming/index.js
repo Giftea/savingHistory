@@ -13,7 +13,7 @@ const farming = () => {
         paragraph={farmingHeroText.paragraph}
         buttonText={farmingHeroText.buttonText}
       />
-      {/* <FarmingComponent /> */}
+      <FarmingComponent />
       <Features />
       <Newsletter />
     </>

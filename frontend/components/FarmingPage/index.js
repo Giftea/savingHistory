@@ -100,7 +100,7 @@ const Section = () => {
             ) : null}
           </p>
           <div className="lg:flex justify-between my-12">
-            <SavehCard
+            {/* <SavehCard
               estimateToken={estimateToken}
               claimableReward={claimableReward}
             />
@@ -109,7 +109,7 @@ const Section = () => {
               yourContribution={contributionInLast30Epoch}
               totalContribution={totalInLast30Epoch}
               claimableReward={claimableReward}
-            />
+            /> */}
           </div>
         </>
       )}
