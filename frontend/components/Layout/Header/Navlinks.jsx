@@ -29,19 +29,15 @@ const Navlinks = () => {
         <MenuList>
           <MenuItem
             onClick={() =>
-              window.open(
-                "https://community.savinghistory.xyz/c/proposals/5",
-                "_blank"
-              )
+              router.push("https://community.savinghistory.xyz/c/proposals/5")
             }
           >
             Open Proposal{" "}
           </MenuItem>
           <MenuItem
             onClick={() =>
-              window.open(
-                "https://community.savinghistory.xyz/tags/c/proposals/5/accepted",
-                "_blank"
+              router.push(
+                "https://community.savinghistory.xyz/tags/c/proposals/5/accepted"
               )
             }
           >
@@ -50,10 +46,7 @@ const Navlinks = () => {
           </MenuItem>
           <MenuItem
             onClick={() =>
-              window.open(
-                "https://demo.snapshot.org/#/savinghistory.eth/",
-                "_blank"
-              )
+              router.push("https://demo.snapshot.org/#/savinghistory.eth")
             }
           >
             Vote Proposals{" "}

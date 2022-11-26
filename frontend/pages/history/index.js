@@ -17,7 +17,6 @@ import {
   MenuItem
 } from "@chakra-ui/react";
 import { ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -29,21 +28,26 @@ export default function ({ jwt, api_key, api_secret }) {
   };
 
   const getHistories = async () => {
-    var config = {
-      method: "get",
-      url: "https://api.pinata.cloud/data/pinList?includesCount=false&metadata[name]=histories.json",
-      headers: {
-        pinata_api_key: api_key,
-        pinata_secret_api_key: api_secret
-      }
-    };
+    try {
+      var config = {
+        method: "get",
+        url: "https://api.pinata.cloud/data/pinList?includesCount=false&metadata[name]=histories.json",
+        headers: {
+          pinata_api_key: api_key,
+          pinata_secret_api_key: api_secret
+        }
+      };
 
-    const res = await axios(config);
-    const hash = res.data.rows[0].ipfs_pin_hash;
+      const res = await axios(config);
+      const hash = res.data.rows[0].ipfs_pin_hash;
 
-    const historiesRes = await axios({ method: "get", url: getIpfsUrl(hash) });
+      const historiesRes = await axios({
+        method: "get",
+        url: getIpfsUrl(hash)
+      });
 
-    setHistories(historiesRes.data);
+      setHistories(historiesRes.data);
+    } catch (error) {}
   };
 
   useEffect(() => {

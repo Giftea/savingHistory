@@ -25,9 +25,11 @@
     "react-dnd": "^14.0.5",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "18.2.0",
+    "react-markdown": "^8.0.3",
     "react-select": "^5.4.0",
     "react-select-country-list": "^2.2.3",
     "react-tag-input": "^6.8.1",
+    "remark-gfm": "^3.0.1",
     "wagmi": "^0.6.8",
     "web3.storage": "^4.4.0"
   },
