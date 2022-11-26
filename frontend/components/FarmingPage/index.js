@@ -66,41 +66,42 @@ const Section = () => {
   useEffect(() => {
     if (address) {
       getEstimate();
+      getTimeLeftInEpoch();
+      getLast30EpochInfo();
+      getClaimableReward();
     }
-    getTimeLeftInEpoch();
-    getLast30EpochInfo();
   }, [address]);
 
   return (
-    <div className="py-8 px-5 md:px-20 lg:px-14 ">
-      {address === undefined ? (
-        <div className="text-center">
-          <Image src="/images/Other/wallet.png" width={550} height={420} />
-          <p className="px-10">
-            To view your $SAVEH balance and receive your
-            <br /> rewards,{" "}
-            {openConnectModal && (
-              <span
-                onClick={openConnectModal}
-                className="text-[#F9AB3A] cursor-pointer"
-              >
-                Connect to your wallet
-              </span>
-            )}
-          </p>
-        </div>
-      ) : (
-        <>
-          <p className="text-center">
+    <>
+      <div className="py-8 px-5 md:px-20 lg:px-14 ">
+        <div>
+          {/* <div className={"text-center" + " " + (address && "hidden")}>
+            <Image src="/images/Other/wallet.png" width={550} height={420} />
+            <div className="px-10">
+              To view your $SAVEH balance and receive your
+              <br /> rewards,{" "}
+              {openConnectModal && (
+                <span
+                  onClick={openConnectModal}
+                  className="text-[#F9AB3A] cursor-pointer"
+                >
+                  Connect to your wallet
+                </span>
+              )}
+            </div>
+          </div> */}
+          {/* Divider */}
+          <div className="text-center">
             Epoch will end in{" "}
             {timeLeft ? (
               <span className="text-[#F9AB3A] font-extrabold text-3xl">
                 <Countdown date={timeLeft} />
               </span>
             ) : null}
-          </p>
+          </div>
           <div className="lg:flex justify-between my-12">
-            {/* <SavehCard
+            <SavehCard
               estimateToken={estimateToken}
               claimableReward={claimableReward}
             />
@@ -109,11 +110,11 @@ const Section = () => {
               yourContribution={contributionInLast30Epoch}
               totalContribution={totalInLast30Epoch}
               claimableReward={claimableReward}
-            /> */}
+            />
           </div>
-        </>
-      )}
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 

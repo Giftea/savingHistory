@@ -16,11 +16,10 @@ const SavehCard = ({ estimateToken, claimableReward }) => {
           </button>
         </div>
       </div>
-      <p></p>
-      {/* <p className="text-[#6C6A65] text-2xl">{savehCardText.heading2}</p> */}
       <p className="text-[#848077] my-5">{savehCardText.text1}</p>
       <p className="text-[#312D22} text-2xl mb-5 font-bold bg-[#F1F0F0] p-5 inline-block">
-        ~ {estimateToken + claimableReward} SAVEH
+        ~ {Number(Number(estimateToken) + Number(claimableReward)).toFixed(2)}{" "}
+        SAVEH
       </p>
       <p className="text-[#848077]">{savehCardText.text2}</p>
     </div>
