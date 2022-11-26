@@ -4,7 +4,7 @@ import { savehCardText } from "../../data";
 const SavehCard = ({ estimateToken, claimableReward }) => {
   return (
     <div className="bg-[#ffffff] shadow-[0_4px_12px_rgba(49,45,34,0.2)] lg:w-2/5 rounded-lg p-10">
-      <p className="text-[#6C6A65] font-bold text-xl mb-8 flex flex-row">
+      <div className="text-[#6C6A65] font-bold text-xl mb-8 flex flex-row">
         <div className="text-left flex-none">{savehCardText.heading1}</div>
         <div className="text-right flex-auto w-64">
           <span className="text-sm">{claimableReward} $SAVEH </span>
@@ -15,7 +15,7 @@ const SavehCard = ({ estimateToken, claimableReward }) => {
             Claim
           </button>
         </div>
-      </p>
+      </div>
       <p></p>
       {/* <p className="text-[#6C6A65] text-2xl">{savehCardText.heading2}</p> */}
       <p className="text-[#848077] my-5">{savehCardText.text1}</p>

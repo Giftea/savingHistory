@@ -26,18 +26,15 @@ export default function () {
         <Box>
           <Flex justify={"space-between"} align={"center"}>
             <Heading as="h1" size="lg" noOfLines={1}>
-              History
+              Communities
             </Heading>
             <Button colorScheme="blue" size={"md"}>
-              Add History
+              Add Community
             </Button>
           </Flex>
         </Box>
         <div className="">
-          <Text>
-            Here you would find all histories recorded on the blockchain for
-            posterity
-          </Text>
+          <Text>Here you would find all the communities that joined</Text>
         </div>
       </div>
 
@@ -64,10 +61,14 @@ export default function () {
               borderColor={"gray.700"}
               border={"1px"}
             >
-              <span className={"pr-4"}>Selected (1)</span>
+              <span className={"pr-4"}>Selected (2)</span>
             </MenuButton>
             <MenuList>
-              <MenuItem>Austria</MenuItem>
+              <MenuItem>Download</MenuItem>
+              <MenuItem>Create a Copy</MenuItem>
+              <MenuItem>Mark as Draft</MenuItem>
+              <MenuItem>Delete</MenuItem>
+              <MenuItem>Attend a Workshop</MenuItem>
             </MenuList>
           </Menu>
         </Flex>
@@ -87,20 +88,18 @@ export default function () {
             >
               <img
                 alt={""}
-                src={
-                  "https://global.discourse-cdn.com/standard17/uploads/savinghistory/original/1X/32616d017729aa1bf4c59f6e3a7f2b16486673b2.jpeg"
-                }
+                src={"images/Features/Image2.png"}
                 style={{ width: "100%" }}
               />
               <Stack mt="6" spacing="3">
                 <Heading as={"h6"} size="sm">
-                  Historic Centre of Vienna
+                  Fubu
                 </Heading>
 
                 <Text color={"gray.700"}>
-                  <span className={"pr-2"}>Vienna</span>
+                  <span className={"pr-2"}>741</span>
                   &#183;
-                  <span className={"px-2"}>Austria</span>
+                  <span className={"px-2"}>Brazil</span>
                 </Text>
               </Stack>
             </Box>

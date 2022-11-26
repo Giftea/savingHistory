@@ -1,17 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-
-} from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 const Navlinks = () => {
-    const router = useRouter()
+  const router = useRouter();
 
   return (
     <div className="flex items-center justify-between nav-links">
@@ -25,11 +19,7 @@ const Navlinks = () => {
       <Menu>
         <MenuButton className="px-4">History</MenuButton>
         <MenuList>
-          <MenuItem
-            onClick={() =>
-              router.push("/history")
-            }
-          >
+          <MenuItem onClick={() => router.push("/history")}>
             Browse Histories{" "}
           </MenuItem>
         </MenuList>
@@ -70,10 +60,10 @@ const Navlinks = () => {
           </MenuItem>
         </MenuList>
       </Menu>
-      <Link href="/farming">
-        <a className="px-4">Farming</a>
-      </Link>
-      <Link href="/staking">Staking</Link>
+      <a href="/farming" className="px-4">
+        Farming
+      </a>
+      <a href="/staking">Staking</a>
       <a
         className="px-4"
         href="https://github.com/Giftea/savingHistory"
