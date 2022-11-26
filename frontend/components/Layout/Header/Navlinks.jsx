@@ -1,15 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-
-} from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navlinks = () => {
+  const router = useRouter();
 
   return (
     <div className="flex items-center justify-between nav-links">
@@ -23,14 +19,7 @@ const Navlinks = () => {
       <Menu>
         <MenuButton className="px-4">History</MenuButton>
         <MenuList>
-          <MenuItem
-            onClick={() =>
-              window.open(
-                "https://community.savinghistory.xyz/c/histories/6",
-                "_blank"
-              )
-            }
-          >
+          <MenuItem onClick={() => router.push("/history")}>
             Browse Histories{" "}
           </MenuItem>
         </MenuList>
@@ -40,19 +29,15 @@ const Navlinks = () => {
         <MenuList>
           <MenuItem
             onClick={() =>
-              window.open(
-                "https://community.savinghistory.xyz/c/proposals/5",
-                "_blank"
-              )
+              router.push("https://community.savinghistory.xyz/c/proposals/5")
             }
           >
             Open Proposal{" "}
           </MenuItem>
           <MenuItem
             onClick={() =>
-              window.open(
-                "https://community.savinghistory.xyz/tags/c/proposals/5/accepted",
-                "_blank"
+              router.push(
+                "https://community.savinghistory.xyz/tags/c/proposals/5/accepted"
               )
             }
           >
@@ -61,20 +46,17 @@ const Navlinks = () => {
           </MenuItem>
           <MenuItem
             onClick={() =>
-              window.open(
-                "https://demo.snapshot.org/#/savinghistory.eth/",
-                "_blank"
-              )
+              router.push("https://demo.snapshot.org/#/savinghistory.eth")
             }
           >
             Vote Proposals{" "}
           </MenuItem>
         </MenuList>
       </Menu>
-      <Link href="/farming">
-        <a className="px-4">Farming</a>
-      </Link>
-      <Link href="/staking">Staking</Link>
+      <a href="/farming" className="px-4">
+        Farming
+      </a>
+      <a href="/staking">Staking</a>
       <a
         className="px-4"
         href="https://github.com/Giftea/savingHistory"

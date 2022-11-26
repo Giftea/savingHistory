@@ -6,15 +6,21 @@ function connectContract() {
   const contractABI = abiJSON.abi;
   let savehContract;
   try {
-    const { ethereum } = window;
+    if (typeof window != "undefined") {
+      const { ethereum } = window;
 
-    if (ethereum) {
-      //checking for eth object in the window
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      const signer = provider.getSigner();
-      savehContract = new ethers.Contract(contractAddress, contractABI, signer); // instantiating new connection to the contract
-    } else {
-      console.log("Ethereum object doesn't exist!");
+      if (ethereum) {
+        //checking for eth object in the window
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        savehContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        ); // instantiating new connection to the contract
+      } else {
+        console.log("Ethereum object doesn't exist!");
+      }
     }
   } catch (error) {
     console.log("ERROR:", error);

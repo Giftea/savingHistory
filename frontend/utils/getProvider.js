@@ -1,10 +1,12 @@
 import { ethers } from "ethers";
 
 export const getProvider = () => {
-  const { ethereum } = window;
+  if (typeof window != undefined) {
+    const { ethereum } = window;
 
-  if (ethereum) {
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    return provider;
+    if (ethereum) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      return provider;
+    }
   }
 };
