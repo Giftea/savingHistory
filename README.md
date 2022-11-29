@@ -1,5 +1,4 @@
 # [savingHistory](https://savinghistory.xyz)
-Built for the ETH VIETNAM Hackathon. Polygon Bounty Track
 
 #### Step 1
 
