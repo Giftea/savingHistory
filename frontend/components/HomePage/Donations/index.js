@@ -48,7 +48,8 @@ const Donate = ({ isOpen, onClose }) => {
 
   const approveUSDC = async (e) => {
     e.preventDefault();
-    if (value > usdcBalance / 1e18)
+    console.log(Number(value) > Number(usdcBalance));
+    if (Number(value) > Number(usdcBalance))
       return toast({
         title: "Insufficient USDC balance",
         status: "error",
