@@ -4,7 +4,15 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['images.unsplash.com']
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://gateway.pinata.cloud/ipfs/:path*',
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig;

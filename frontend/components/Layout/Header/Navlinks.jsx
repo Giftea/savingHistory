@@ -29,15 +29,19 @@ const Navlinks = () => {
         <MenuList>
           <MenuItem
             onClick={() =>
-              router.push("https://community.savinghistory.xyz/c/proposals/5")
+              window.open(
+                "https://community.savinghistory.xyz/c/proposals/5",
+                "_blank"
+              )
             }
           >
             Open Proposal{" "}
           </MenuItem>
           <MenuItem
             onClick={() =>
-              router.push(
-                "https://community.savinghistory.xyz/tags/c/proposals/5/accepted"
+              window.open(
+                "https://community.savinghistory.xyz/tags/c/proposals/5/accepted",
+                "_blank"
               )
             }
           >
@@ -46,17 +50,22 @@ const Navlinks = () => {
           </MenuItem>
           <MenuItem
             onClick={() =>
-              router.push("https://demo.snapshot.org/#/savinghistory.eth")
+              window.open(
+                "https://demo.snapshot.org/#/savinghistory.eth",
+                "_blank"
+              )
             }
           >
             Vote Proposals{" "}
           </MenuItem>
         </MenuList>
       </Menu>
-      <a href="/farming" className="px-4">
-        Farming
-      </a>
-      <a href="/staking">Staking</a>
+      <Link href="/farming">
+        <a className="px-4">Farming</a>
+      </Link>
+      <Link href="/staking">
+        <a className="px-4">Staking</a>
+      </Link>
       <a
         className="px-4"
         href="https://github.com/Giftea/savingHistory"

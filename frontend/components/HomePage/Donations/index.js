@@ -39,8 +39,8 @@ const Donate = ({ isOpen, onClose }) => {
 
   const tokenContract = USDCContract();
   useEffect(() => {
-    getBalance();
-  }, []);
+    address && getBalance();
+  }, [address]);
 
   const handleonChange = (e) => {
     setValue(e.target.value);

@@ -73,6 +73,16 @@ const Staking = () => {
   }
 
   async function approveStaking() {
+    if (stakeValue === undefined) {
+      return toast({
+        title: `Please add a value!`,
+        status: "error",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+
     try {
       setLoading(true);
       const res = await savehContract.approve(

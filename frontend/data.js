@@ -170,7 +170,7 @@ export const savehCardText = {
   heading2: "Donation Reward",
   price: "~150.76 SAVEH",
   text1:
-    "For donating to almost extinct cultures and presercing their History.",
+    "For donating to almost extinct cultures and preserving their heritage.",
   text2:
     "This is a rough estimate of the total amount of $SAVEH rewards that have been assigned to you and are waiting to be claimed."
 };
