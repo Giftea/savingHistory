@@ -79,10 +79,11 @@ const Donate = ({ isOpen, onClose }) => {
         });
 
       setLoading(false);
+
+      setStep(2);
     } catch (error) {
       console.log("Approval error: ", error);
     }
-    setStep(2);
   };
 
   const handleSubmit = async (e) => {
