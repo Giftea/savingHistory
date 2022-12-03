@@ -31,7 +31,7 @@ export default function ({ jwt, api_key, api_secret }) {
     try {
       var config = {
         method: "get",
-        url: "https://api.pinata.cloud/data/pinList?includesCount=false&metadata[name]=histories.json",
+        url: "https://api.pinata.cloud/data/pinList?includesCount=false&metadata[category]=histories.json",
         headers: {
           pinata_api_key: api_key,
           pinata_secret_api_key: api_secret
