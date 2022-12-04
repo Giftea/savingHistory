@@ -10,7 +10,7 @@ import {
   Input,
   Spinner,
   Center,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import { useAccount, useToken } from "wagmi";
 import donateContract from "../../../utils/DonationMiner/contract";
@@ -49,14 +49,25 @@ const Donate = ({ isOpen, onClose }) => {
   const approveUSDC = async (e) => {
     e.preventDefault();
     console.log(Number(value) > Number(usdcBalance));
-    if (Number(value) > Number(usdcBalance))
+    if (!address) {
+      onClose();
+      return toast({
+        title: "Please connect wallet",
+        status: "error",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+    if (Number(value) > Number(usdcBalance)) {
       return toast({
         title: "Insufficient USDC balance",
         status: "error",
         position: "top",
         duration: 9000,
-        isClosable: true
+        isClosable: true,
       });
+    }
 
     try {
       const approveDonation = await tokenContract.approve(
@@ -76,7 +87,7 @@ const Donate = ({ isOpen, onClose }) => {
           status: "success",
           position: "top",
           duration: 9000,
-          isClosable: true
+          isClosable: true,
         });
 
       setLoading(false);
@@ -84,6 +95,7 @@ const Donate = ({ isOpen, onClose }) => {
       setStep(2);
     } catch (error) {
       console.log("Approval error: ", error);
+      onClose();
     }
   };
 
@@ -108,7 +120,7 @@ const Donate = ({ isOpen, onClose }) => {
           status: "success",
           position: "top",
           duration: 9000,
-          isClosable: true
+          isClosable: true,
         });
         onClose();
         router.push("/farming");
@@ -121,8 +133,11 @@ const Donate = ({ isOpen, onClose }) => {
           status: "error",
           position: "top",
           duration: 9000,
-          isClosable: true
+          isClosable: true,
         });
+        onClose();
+        setStep(1);
+        setValue();
       });
   };
 
