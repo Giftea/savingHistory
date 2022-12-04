@@ -34,8 +34,8 @@ export default function ({ jwt, api_key, api_secret }) {
         url: "https://api.pinata.cloud/data/pinList?includesCount=false&metadata[category]=histories.json",
         headers: {
           pinata_api_key: api_key,
-          pinata_secret_api_key: api_secret
-        }
+          pinata_secret_api_key: api_secret,
+        },
       };
 
       const res = await axios(config);
@@ -43,7 +43,7 @@ export default function ({ jwt, api_key, api_secret }) {
 
       const historiesRes = await axios({
         method: "get",
-        url: getIpfsUrl(hash)
+        url: getIpfsUrl(hash),
       });
 
       setHistories(historiesRes.data);
@@ -51,9 +51,9 @@ export default function ({ jwt, api_key, api_secret }) {
   };
 
   useEffect(() => {
-    getHistories()
+    getHistories();
     if (jwt != undefined) getHistories();
-  },[]);
+  }, []);
   return (
     <div className="bg-ash py-20 px-5 md:px-10 lg:px-14">
       <div className="w-full pb-10 mb-6">
@@ -62,9 +62,11 @@ export default function ({ jwt, api_key, api_secret }) {
             <Heading as="h1" size="lg" noOfLines={1}>
               History
             </Heading>
-            <Button colorScheme="blue" size={"md"}>
+            <button
+              className={`bg-primary text-sm py-4 px-5 rounded-3xl w-full`}
+            >
               Add History
-            </Button>
+            </button>
           </Flex>
         </Box>
         <div className="">
