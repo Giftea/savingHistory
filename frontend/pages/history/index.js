@@ -63,7 +63,7 @@ export default function ({ jwt, api_key, api_secret }) {
               History
             </Heading>
             <button
-              className={`bg-primary text-sm py-4 px-5 rounded-3xl w-full`}
+              className={`bg-primary text-sm py-4 px-5 rounded-3xl`}
             >
               Add History
             </button>
