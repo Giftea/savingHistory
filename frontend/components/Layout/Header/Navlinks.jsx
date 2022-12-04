@@ -68,7 +68,7 @@ const Navlinks = () => {
       </Link>
       <a
         className="px-4"
-        href="https://github.com/Giftea/savingHistory"
+        href="https://github.com/Giftea/savingHistory-blockchain-for-good"
         target="_blank"
       >
         <Image src="/images/Header/github-icon.png" width={24} height={24} />
