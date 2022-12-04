@@ -79,7 +79,7 @@ const Staking = () => {
         status: "error",
         position: "top",
         duration: 9000,
-        isClosable: true,
+        isClosable: true
       });
     }
 
@@ -89,8 +89,11 @@ const Staking = () => {
         "0x340e1d8b936e260e91bb357d10576ca5e3648907",
         ethers.utils.parseEther(stakeValue.toString())
       );
-      console.log(res);
-      res &&
+
+      const done = await res.wait();
+
+      console.log(done);
+      done &&
         toast({
           title: `Stake approved!`,
           status: "success",
@@ -99,7 +102,7 @@ const Staking = () => {
           isClosable: true
         });
       setLoading(false);
-      res && setStep(2);
+      done && setStep(2);
     } catch (error) {
       console.log(error);
       setLoading(true);
@@ -122,7 +125,12 @@ const Staking = () => {
         ethers.utils.parseEther(stakeValue.toString())
         // { gasLimit: 900000 }
       );
-      res &&
+
+      const done = await res.wait();
+
+      console.log(done);
+
+      done &&
         toast({
           title: `Stake successful!`,
           status: "success",
@@ -131,10 +139,10 @@ const Staking = () => {
           isClosable: true
         });
       setLoading(false);
-      res && setStep(1);
+      done && setStep(1);
     } catch (error) {
       setLoading(true);
-      console.log(error);
+      console.log("Stake Error: ", error);
       toast({
         title: `Stake unsuccessful!`,
         status: "error",
