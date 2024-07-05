@@ -6,7 +6,7 @@ const FeatureText = () => {
   return (
     <div className="flex-col basis-1/2">
       {features.map((feature, index) => (
-        <div key={index} className="my-16 lg:pr-16">
+        <div key={index} className="md:my-16 my-10 lg:pr-16">
           <img
             src={feature.image}
             className="border-black border feature-icon"

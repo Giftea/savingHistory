@@ -92,7 +92,7 @@ const Section = () => {
             </div>
           </div> */}
           {/* Divider */}
-          <div className="text-center">
+          <div className="text-center mb-5">
             Epoch will end in{" "}
             {timeLeft ? (
               <span className="text-[#F9AB3A] font-extrabold text-3xl">
@@ -100,7 +100,7 @@ const Section = () => {
               </span>
             ) : null}
           </div>
-          <div className="lg:flex justify-between my-12">
+          <div className="lg:flex justify-between md:my-12">
             <SavehCard
               estimateToken={estimateToken}
               claimableReward={claimableReward}

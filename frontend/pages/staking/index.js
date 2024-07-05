@@ -5,12 +5,12 @@ import {
   TabList,
   TabPanels,
   Tab,
+  Flex,
   TabPanel,
   Spinner,
-  Flex,
   useToast,
   Divider,
-  Button
+  Button,
 } from "@chakra-ui/react";
 import donateMinerContract from "../../utils/DonationMiner/contract";
 import { useAccount } from "wagmi";
@@ -79,7 +79,7 @@ const Staking = () => {
         status: "error",
         position: "top",
         duration: 9000,
-        isClosable: true
+        isClosable: true,
       });
     }
 
@@ -99,7 +99,7 @@ const Staking = () => {
           status: "success",
           position: "top",
           duration: 9000,
-          isClosable: true
+          isClosable: true,
         });
       setLoading(false);
       done && setStep(2);
@@ -111,7 +111,7 @@ const Staking = () => {
         status: "error",
         position: "top",
         duration: 9000,
-        isClosable: true
+        isClosable: true,
       });
       setLoading(false);
     }
@@ -136,7 +136,7 @@ const Staking = () => {
           status: "success",
           position: "top",
           duration: 9000,
-          isClosable: true
+          isClosable: true,
         });
       setLoading(false);
       done && setStep(1);
@@ -148,7 +148,7 @@ const Staking = () => {
         status: "error",
         position: "top",
         duration: 9000,
-        isClosable: true
+        isClosable: true,
       });
       setLoading(false);
       setStep(1);
@@ -167,21 +167,18 @@ const Staking = () => {
 
   return (
     <>
-      <Flex justifyContent="space-between" className="bg-ash" px={14} py={14}>
-        <div>
-          <h1 className="md:text-xl lg:text-5xl text-lg font-bold">
-            Increase your governance
-            <br /> power and earn extra
-            <br /> rewards by staking $SAVEH.
+      <div className="bg-ash flex lg:flex-row flex-col justify-between px-5 py-5 md:px-14 md:py-14">
+        <div className="pr-8 lg:w-[50%]">
+          <h1 className="md:text-5xl text-2xl font-bold">
+            Increase your governance power and earn extra rewards by staking
+            $SAVEH.
           </h1>
-          <p className="text-[#888] my-5 ">
+          <p className="text-[#888] my-5">
             When we believe in the mission and vision of a project and want to
-            keep
-            <br /> its assets in a long term, staking is a great option to make
-            the most of them.
-            <br /> In this sense, if you are aligned with savingHistory's
-            mission and want to a<br /> world where no culture is forgotten,
-            stake now your $SAVEH tokens.
+            keep its assets in a long term, staking is a great option to make
+            the most of them. In this sense, if you are aligned with
+            savingHistory's mission and want to a world where no culture is
+            forgotten, stake now your $SAVEH tokens.
           </p>
           <a
             href="https://community.savinghistory.xyz/c/general/4"
@@ -191,7 +188,7 @@ const Staking = () => {
             Learn More
           </a>
         </div>
-        <div className="bg-[#ffffff] shadow-[0_4px_12px_rgba(49,45,34,0.2)] w-[55%] rounded-lg p-10">
+        <div className="bg-[#ffffff] shadow-[0_4px_12px_rgba(49,45,34,0.2)] rounded-lg p-10 mt-10 lg:mt-0">
           <h1 className="md:text-xl lg:text-2xl text-lg text-center my-2 font-bold">
             $SAVEH Staking APR: {34.25}%
           </h1>
@@ -215,13 +212,9 @@ const Staking = () => {
                         {balance} SAVEH
                       </span>
                     </h1>
-                    <Flex
-                      justifyContent={"space-between"}
-                      alignItems={"center"}
-                      mt={3}
-                    >
-                      <div className="md:text-xl lg:text-xl text-lg font-bold mt-3">
-                        SAVEH{" "}
+                    <div className="flex md:flex-row flex-col justify-between md:items-center mt-3">
+                      <div className="md:text-xl lg:text-xl text-base font-bold mt-3">
+                        SAVEH:{" "}
                         <input
                           type="number"
                           value={stakeValue}
@@ -262,7 +255,7 @@ const Staking = () => {
                           </Button>
                         )}
                       </div>
-                    </Flex>
+                    </div>
                   </div>
 
                   <div className="border-[1px] border-[#99999960] rounded-lg py-3 px-4">
@@ -301,10 +294,7 @@ const Staking = () => {
                         {balance} SAVEH
                       </span>
                     </h1>
-                    <Flex
-                      justifyContent={"space-between"}
-                      alignItems={"center"}
-                      mt={3}
+                    <div className="flex md:flex-row flex-col justify-between md:items-center mt-3"
                     >
                       <div className="md:text-xl lg:text-xl text-lg font-bold mt-3">
                         SAVEH{" "}
@@ -331,7 +321,7 @@ const Staking = () => {
                           Unstake
                         </Button>
                       </div>
-                    </Flex>
+                    </div>
                   </div>
 
                   <div className="border-[1px] border-[#99999960] rounded-lg py-3 px-4">
@@ -393,7 +383,7 @@ const Staking = () => {
             </TabPanels>
           </Tabs>
         </div>
-      </Flex>
+      </div>
     </>
   );
 };

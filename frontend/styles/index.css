@@ -32,7 +32,8 @@ a {
 }
 
 body {
-  font-family: Euclid Circular A !important;
+  font-family: sans-serif;
+  
 }
 
 .future-plan {
@@ -60,8 +61,8 @@ body {
   align-items: center;
   padding: 8px 24px;
   gap: 8px;
-  width: 214px;
-  height: 39px;
+  /* width: 214px; */
+  /* height: 39px; */
   border-radius: 28px;
 }
 

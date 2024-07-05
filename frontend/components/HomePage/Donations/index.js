@@ -145,15 +145,15 @@ const Donate = ({ isOpen, onClose }) => {
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered size="lg">
         <ModalOverlay />
-        <ModalContent>
-          <div className="m-8">
+        <ModalContent className='mx-2'>
+          <div className="md:m-8 m-4">
             {" "}
             <ModalHeader>Donate USDC Token</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <form>
                 {" "}
-                <p className="text-[#6C6A65]">
+                <p className="text-[#6C6A65] md:text-base text-xs">
                   The amount you donate and the total amount raised over the
                   previous 30 epochs, may determine the amount of $SAVEH token
                   you will get.
@@ -165,7 +165,7 @@ const Donate = ({ isOpen, onClose }) => {
                 />
                 <div className="flex justify-between items-center my-3">
                   <img src="/images/Other/usdc.png " height={20} width={20} />
-                  <p className="text-sm">
+                  <p className="md:text-sm text-xs">
                     Available Balance:{" "}
                     <span className="font-bold">
                       {Number(usdcBalance).toFixed(2)} USDC

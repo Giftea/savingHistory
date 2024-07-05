@@ -16,14 +16,14 @@ const Navlinks = () => {
       >
         FAQ
       </a> */}
-      <Menu>
+      {/* <Menu>
         <MenuButton className="px-4">History</MenuButton>
         <MenuList>
           <MenuItem onClick={() => router.push("/history")}>
             Browse Histories{" "}
           </MenuItem>
         </MenuList>
-      </Menu>
+      </Menu> */}
 {/*       <Menu>
         <MenuButton className="px-4">Proposals</MenuButton>
         <MenuList>
