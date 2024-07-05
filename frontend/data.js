@@ -1,42 +1,42 @@
 /* ------------- HOME PAGE -------------*/
 /* HEADER */
 export const navlinks = [
-  {
-    title: "FAQ",
-    link: "forum.savinghistory.xyz",
-    dropDown: null
-  },
-  {
-    title: "History",
-    link: "",
-    dropDown: {
-      icon: "/images/Header/down-icon.png",
-      links: [
-        {
-          text: "Open Proposal",
-          link: "/history/open-proposal"
-        },
-        {
-          text: "Browse Proposal",
-          link: "/history/browse-proposal"
-        },
-        {
-          text: "Browse History",
-          link: "/history/browse-history"
-        }
-      ]
-    }
-  },
+  // {
+  //   title: "FAQ",
+  //   link: "forum.savinghistory.xyz",
+  //   dropDown: null
+  // },
+  // {
+  //   title: "History",
+  //   link: "",
+  //   dropDown: {
+  //     icon: "/images/Header/down-icon.png",
+  //     links: [
+  //       {
+  //         text: "Open Proposal",
+  //         link: "/history/open-proposal"
+  //       },
+  //       {
+  //         text: "Browse Proposal",
+  //         link: "/history/browse-proposal"
+  //       },
+  //       {
+  //         text: "Browse History",
+  //         link: "/history/browse-history"
+  //       }
+  //     ]
+  //   }
+  // },
   {
     title: "Farming",
     link: "/farming",
     dropDown: null
-  }
-  // {
-  //   title: "Staking",
-  //   link: "/staking",
-  //   dropDown: null,
-  // },
+  },
+  {
+    title: "Staking",
+    link: "/staking",
+    dropDown: null,
+  },
 ];
 
 /* HERO */
