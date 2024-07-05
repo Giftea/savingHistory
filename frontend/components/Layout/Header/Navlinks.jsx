@@ -9,13 +9,13 @@ const Navlinks = () => {
 
   return (
     <div className="flex items-center justify-between nav-links">
-      <a
+{/*       <a
         href="https://community.savinghistory.xyz/c/general/4"
         className="px-4"
         target="_blank"
       >
         FAQ
-      </a>
+      </a> */}
       <Menu>
         <MenuButton className="px-4">History</MenuButton>
         <MenuList>
@@ -24,7 +24,7 @@ const Navlinks = () => {
           </MenuItem>
         </MenuList>
       </Menu>
-      <Menu>
+{/*       <Menu>
         <MenuButton className="px-4">Proposals</MenuButton>
         <MenuList>
           <MenuItem
@@ -59,7 +59,7 @@ const Navlinks = () => {
             Vote Proposals{" "}
           </MenuItem>
         </MenuList>
-      </Menu>
+      </Menu> */}
       <Link href="/farming">
         <a className="px-4">Farming</a>
       </Link>
